@@ -1,22 +1,19 @@
 import "react-native-gesture-handler";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
+import { ThemeProvider } from "react-native-elements";
 import * as React from "react";
 
-import HomeScreen from "./HomeScreen";
-import SettingsScreen from "./SettingsScreen";
+import MainNavigator from "./MainNavigator";
+import theme from "./theme";
 
 export default function App() {
-  const Tab = createBottomTabNavigator();
-
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-      <StatusBar style="auto" />
-    </NavigationContainer>
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>
+        <MainNavigator />
+        <StatusBar style="auto" />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
