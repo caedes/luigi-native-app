@@ -1,19 +1,12 @@
-import * as React from "react";
 import { ActivityIndicator, FlatList, Text, View } from "react-native";
-import { Card } from "react-native-elements";
+import * as React from "react";
 
+import PizzaCard from "../PizzaCard";
 import usePizzas from "../pizzas/usePizzas";
 
-const renderPizza = ({ item: { title, image, description } }) => (
-  <Card>
-    <Card.Title>{title}</Card.Title>
-    <Card.Image source={{ uri: image }} />
-    <Card.Divider />
-    <Text style={{ marginBottom: 10 }}>{description}</Text>
-  </Card>
-);
+const renderPizza = ({ item }) => <PizzaCard {...item} />;
 
-const itemId = ({ id }) => id;
+const itemId = ({ id }) => String(id);
 
 export default function HomeScreen() {
   const { isLoading, error, data } = usePizzas();

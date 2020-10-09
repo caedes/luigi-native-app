@@ -4,30 +4,30 @@ import { Icon } from "react-native-elements";
 import * as React from "react";
 
 import BasketScreen from "../BasketScreen";
-import HomeScreen from "../HomeScreen";
+import PizzasNavigator from "../PizzasNavigator";
 import SettingsScreen from "../SettingsScreen";
 
+const Tab = createBottomTabNavigator();
+
+const routes = [
+  {
+    name: "Home",
+    component: PizzasNavigator,
+    icon: "home",
+  },
+  {
+    name: "Basket",
+    component: BasketScreen,
+    icon: "shopping-cart",
+  },
+  {
+    name: "Settings",
+    component: SettingsScreen,
+    icon: "settings",
+  },
+];
+
 export default function MainNavigator() {
-  const Tab = createBottomTabNavigator();
-
-  const routes = [
-    {
-      name: "Home",
-      component: HomeScreen,
-      icon: "home",
-    },
-    {
-      name: "Basket",
-      component: BasketScreen,
-      icon: "shopping-cart",
-    },
-    {
-      name: "Settings",
-      component: SettingsScreen,
-      icon: "settings",
-    },
-  ];
-
   return (
     <Tab.Navigator>
       {routes.map(({ name, component, icon }) => (
