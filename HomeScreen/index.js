@@ -3,6 +3,7 @@ import * as React from "react";
 
 import PizzaCard from "../PizzaCard";
 import usePizzas from "../pizzas/usePizzas";
+import { initPizzas } from "../pizzas";
 
 const renderPizza = ({ item }) => <PizzaCard {...item} />;
 
@@ -10,6 +11,7 @@ const itemId = ({ id }) => String(id);
 
 export default function HomeScreen() {
   const { isLoading, error, data } = usePizzas();
+  initPizzas(data);
 
   if (isLoading) return <ActivityIndicator />;
 
